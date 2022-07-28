@@ -148,3 +148,7 @@ kubectl delete pod goserver
 ### Criando primeira ReplicaSet
 
 Criar arquivo k8s/replicaset.yaml
+
+```
+kubectl apply -f k8s/replicaset.yaml
+```
