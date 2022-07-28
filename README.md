@@ -47,13 +47,13 @@ F = Frontend => 2 réplicas
 ----F--F--------
 ----------------
 
-## Instalando Kind
+### Instalando Kind
 
 Instale Kind e Kubectl
 
 https://kind.sigs.k8s.io/docs/user/quick-start/#creating-a-cluster
 
-## Criando primeiro cluster com Kind
+### Criando primeiro cluster com Kind
 
 Criando cluster
 
@@ -79,7 +79,7 @@ Deletando cluster
 kind delete clusters kind
 ```
 
-## Criando cluster multi node
+### Criando cluster multi node
 
 Crie o arquivo kind.yaml na pasta k8s
 
@@ -89,7 +89,7 @@ kind  create cluster --config=k8s/kind.yaml
 
 https://kind.sigs.k8s.io/docs/user/configuration/#nodes
 
-## Mudança de context oe extensão do VSCod
+### Mudança de context oe extensão do VSCod
 
 Listando os clusters configurados
 
@@ -106,3 +106,45 @@ kubectl config use-context {kind-fullcycle}
 Instalar a extensão do VSCod
 
 https://marketplace.visualstudio.com/items?itemName=ms-kubernetes-tools.vscode-kubernetes-tools
+
+## Primeiros passos na prática
+
+### Criando aplicação exemplo e imagem
+
+Criar imagem
+
+```
+docker build -t lkosaka/hello-go .
+```
+
+Testando a imagem
+
+```
+docker run --rm -p 80:80 lkosaka/hello-go
+```
+
+Subir a imagem no docker hub
+
+```
+dockedr push lkosaka/hello-go
+```
+
+### Trabalhando com Pods
+
+Criar arquivo k8s/pod.yaml
+
+Criando o primeiro Pod
+
+```
+kubectl apply -f k8s/pod.yaml 
+```
+
+Excluir o Pod
+
+```
+kubectl delete pod goserver
+```
+
+### Criando primeira ReplicaSet
+
+Criar arquivo k8s/replicaset.yaml
