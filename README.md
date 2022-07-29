@@ -201,3 +201,16 @@ kubectl rollout undo deployment goserver --to-revision={numero da revisao}
 ### Entendendo o conceito de services
 
 A porta de entrada para aplicação
+
+### Utilizando ClusterIP
+
+```
+kubectl apply -f k8s/service.yaml
+kubectl get service
+```
+
+Vinculando a porta local com porta do pod
+
+```
+kubectl port-forward svc/goserver-service 8000:80
+```
