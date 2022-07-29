@@ -204,14 +204,14 @@ A porta de entrada para aplicação
 
 ### Utilizando ClusterIP
 
-Responsável por definir a porta do pod
+Responsável por definir a porta do cluster
 
 ```
 kubectl apply -f k8s/service.yaml
 kubectl get service
 ```
 
-Vinculando a porta local com porta do pod
+Vinculando a porta local com porta do cluster
 
 ```
 kubectl port-forward svc/goserver-service 8000:80
@@ -230,3 +230,8 @@ Acessando a API do Kubernetes
 ```
 kubectl proxy --port=8080
 ```
+
+### Utilizando NodePort
+
+Gera uma porta e libera a porta de todos os nodes do cluster.
+Geralmente utilizado para demonstração
