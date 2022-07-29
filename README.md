@@ -152,3 +152,26 @@ Criar arquivo k8s/replicaset.yaml
 ```
 kubectl apply -f k8s/replicaset.yaml
 ```
+
+### O problema do ReplicaSet
+
+Quando vc sobe o ReplicaSet com docker X e depois altera para docker Y, a alteracão só ocorre quando mata o pod.
+
+```
+kubectl describe pod {nome do pod}
+```
+
+### Implementando Deployment
+
+O Deployment é responsável por matar a ReplicaSet para subir uma nova.
+
+```
+kubectl delete replicaset goserver
+kubectl get pods
+```
+
+```
+kubectl apply -f k8s/deployment.yaml
+kubectl get deployments
+kubectl get replicasets
+```
