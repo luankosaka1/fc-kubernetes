@@ -225,3 +225,8 @@ TargetPort: a porta do container (porta da aplicação)
 
 ### Utilizando proxy para acessar API do Kubernetes
 
+Acessando a API do Kubernetes
+
+```
+kubectl proxy --port=8080
+```
