@@ -204,6 +204,8 @@ A porta de entrada para aplicação
 
 ### Utilizando ClusterIP
 
+Responsável por definir a porta do pod
+
 ```
 kubectl apply -f k8s/service.yaml
 kubectl get service
@@ -214,3 +216,8 @@ Vinculando a porta local com porta do pod
 ```
 kubectl port-forward svc/goserver-service 8000:80
 ```
+
+### Diferenças entre Port e targetPort
+
+Port: a porta do service
+TargetPort: a porta do container (porta da aplicação)
