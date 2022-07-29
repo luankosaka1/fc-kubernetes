@@ -195,3 +195,9 @@ Escolhendo a versão que queria retornar
 ```
 kubectl rollout undo deployment goserver --to-revision={numero da revisao}
 ```
+
+## Services
+
+### Entendendo o conceito de services
+
+A porta de entrada para aplicação
