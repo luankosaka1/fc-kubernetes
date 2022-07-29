@@ -175,3 +175,23 @@ kubectl apply -f k8s/deployment.yaml
 kubectl get deployments
 kubectl get replicasets
 ```
+
+### Rollout e Revisões
+
+Como voltar a versão anterior da replicaset?
+
+```
+kubectl rollout history deployment goserver
+```
+
+Volta para última versão
+
+```
+kubectl rollout undo deployment goserver
+```
+
+Escolhendo a versão que queria retornar
+
+```
+kubectl rollout undo deployment goserver --to-revision={numero da revisao}
+```
