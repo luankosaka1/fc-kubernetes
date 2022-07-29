@@ -235,3 +235,14 @@ kubectl proxy --port=8080
 
 Gera uma porta e libera a porta de todos os nodes do cluster.
 Geralmente utilizado para demonstração
+
+### Trabalhando com LoadBalancer
+
+Utilizando quando tem um cluster gerenciado
+Gera automaticamente IP externo
+
+```
+kubectl apply -f k8s/loadbalance.yaml
+```
+
+Quando executar kubectl get svc, o campo EXTERNAL-IP será preenchido automaticamente quando utilizado na AWS/DigitalOcean...
