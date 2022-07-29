@@ -221,3 +221,7 @@ kubectl port-forward svc/goserver-service 8000:80
 
 Port: a porta do service
 TargetPort: a porta do container (porta da aplicação)
+
+
+### Utilizando proxy para acessar API do Kubernetes
+
