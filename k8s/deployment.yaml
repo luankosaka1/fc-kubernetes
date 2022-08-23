@@ -16,4 +16,9 @@ spec:
     spec:
       containers:
       - name: "goserver"
-        image: "lkosaka/hello-go:latest"
+        image: "lkosaka/hello-go:v1"
+        env:
+          - name: NAME
+            value: "Luan"
+          - name: AGE
+            value: "36"

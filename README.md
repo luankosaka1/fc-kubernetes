@@ -246,3 +246,26 @@ kubectl apply -f k8s/loadbalance.yaml
 ```
 
 Quando executar kubectl get svc, o campo EXTERNAL-IP será preenchido automaticamente quando utilizado na AWS/DigitalOcean...
+
+## Objetos de configuração
+
+Trabalhando com variáveis de ambiente
+
+Atualizar a imagem
+
+```
+docker build -t lkosaka/hello-go:v1 .
+docker push lkosaka/hello-go:v1
+```
+
+Adicionar os variaveis de ambiente
+
+```
+kubectl apply -f k8s/deployment.yaml
+```
+
+Liberar a porta para testar local
+
+```
+kubectl port-forward svc/goserver-service 8000:80
+```
