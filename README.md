@@ -269,3 +269,9 @@ Liberar a porta para testar local
 ```
 kubectl port-forward svc/goserver-service 8000:80
 ```
+
+### Variáveis de ambiente com ConfigMap
+
+Crie o arquivo k8s/configmap-env.yaml
+
+Quando alterar o arquivo configmap-env.yaml é necessário regerar o deployment.yaml (arquivo que utilizar as configurações do configmap-env.yaml)
