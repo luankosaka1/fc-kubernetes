@@ -318,3 +318,16 @@ Precisamos tratar os pods que apresentarem problemas e garantir que os usuários
 ### Criando endpoint Healthz
 
 Criado novo endpoint no server.go e versão v7 do lkosaka/hello-go
+
+### Liveness na prática
+
+Existem três tipos: 
+- Http (faz requisição)
+- Command (executa comando no container)
+- TCP (estabelece conexão)
+
+Consulta frequentement os pods
+
+```
+watch -n1 kubectl get pods
+```

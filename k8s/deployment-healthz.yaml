@@ -17,6 +17,15 @@ spec:
       containers:
         - name: goserver
           image: "lkosaka/hello-go:v7"
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8000 # porta do container, não confundir com do services
+            periodSeconds: 5 # de quanto em quanto tempo será realizado a verificação
+            failureThreshold: 3 # quantas vezes precisa dar erro para reiniciar
+            timeoutSeconds: 1 # quanto tempo limite para completar a requisição, quando dar erro entra no contador do failureThreshold
+            successThreshold: 1 # quantas vezes precisa testar para dar ok
+
           envFrom:
             - configMapRef:
                 name: configmap-family
