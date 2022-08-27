@@ -331,3 +331,14 @@ Consulta frequentement os pods
 ```
 watch -n1 kubectl get pods
 ```
+
+### Entendendo readiness
+
+O readiness tem como objetivo definir quando a aplicação esta pronto para tráfego.
+
+
+Veja as informações (historico) dos status de um determinado pod
+
+```
+kubectl describe pod {nome do pod}
+```
