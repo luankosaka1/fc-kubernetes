@@ -321,6 +321,8 @@ Criado novo endpoint no server.go e versão v7 do lkosaka/hello-go
 
 ### Liveness na prática
 
+o liveness reincia o processo quando der X erros (failureThreshold)
+
 Existem três tipos: 
 - Http (faz requisição)
 - Command (executa comando no container)
@@ -334,7 +336,7 @@ watch -n1 kubectl get pods
 
 ### Entendendo readiness
 
-O readiness tem como objetivo definir quando a aplicação esta pronto para tráfego.
+O readiness tem como objetivo definir quando a aplicação esta pronto para tráfego e quando der erro irá interromper a aplicação.
 
 
 Veja as informações (historico) dos status de um determinado pod
@@ -342,3 +344,12 @@ Veja as informações (historico) dos status de um determinado pod
 ```
 kubectl describe pod {nome do pod}
 ```
+
+### Combinando Liveness e Readiness
+
+Devemos tomar cuidado com as configurações para que um não impacte no outro e acabe deixando a aplicação fora!!!
+
+### Trabalhando com startupProbe
+
+A partir da versão 1.16 do kubernet foi adicionado startupProbe.
+
