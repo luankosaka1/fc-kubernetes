@@ -7,8 +7,8 @@ spec:
     app: goserver
   type: ClusterIP
   ports:
-  - name: goserver-service
-    port: 80 # a porta do service
-    targetPort: 8000 # a porta do container (porta da aplicação)
-    protocol: TCP
-    nodePort: 30001 # quem acessa pela porta 3001 cai na porta 80
+    - name: goserver-service
+      port: 80 # a porta do service
+      targetPort: 8000 # a porta do container (porta da aplicação)
+      protocol: TCP
+      # nodePort: 30001 # quem acessa pela porta 3001 cai na porta 80

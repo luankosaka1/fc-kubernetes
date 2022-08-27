@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: goserver
+  name: goserver # nome do replicaset
   labels:
-    app: goserver
+    app: goserver 
 spec:
-  selector:
+  selector: # filtra os objetos por label
     matchLabels:
       app: goserver
-  replicas: 2
-  template:
+  replicas: 3
+  template: # template do pod que queremos executar
     metadata:
       labels:
         app: "goserver"
     spec:
       containers:
-      - name: goserver
-        image: "lkosaka/hello-go:latest"
+        - name: goserver
+          image: "lkosaka/hello-go:v1"

@@ -7,7 +7,7 @@ spec:
     app: goserver
   type: LoadBalancer
   ports:
-  - name: goserver-service
-    port: 80 # a porta do service
-    targetPort: 8000 # a porta do container (porta da aplicação)
-    protocol: TCP
+    - name: goserver-service
+      port: 80 # a porta do service
+      targetPort: 8000 # a porta do container (porta da aplicação)
+      protocol: TCP

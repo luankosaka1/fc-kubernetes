@@ -200,7 +200,9 @@ kubectl rollout undo deployment goserver --to-revision={numero da revisao}
 
 ### Entendendo o conceito de services
 
-A porta de entrada para aplicação
+Quando temos as maquinas rodando, não sigifica que ele esteja disponível para acessar.
+
+O services é a porta de entrada para aplicação, responsável por disponibilizar a aplicação para acessar externamente.
 
 ### Utilizando ClusterIP
 
@@ -275,3 +277,34 @@ kubectl port-forward svc/goserver-service 8000:80
 Crie o arquivo k8s/configmap-env.yaml
 
 Quando alterar o arquivo configmap-env.yaml é necessário regerar o deployment.yaml (arquivo que utilizar as configurações do configmap-env.yaml)
+
+### Injetando ConfigMap na aplicação
+
+Acessando o pod
+
+```
+kubectl exec -it goserver-bxzrt -- bash
+```
+
+Acessando o log do pod
+
+```
+kubectl logs {pod}
+```
+
+Quando o POD fica com o status pending e náo starta é recomendado utilziar o k3d
+
+Instalando k3d
+
+```
+$ wget -q -O - https://raw.githubusercontent.com/rancher/k3d/main/install.sh | bash
+```
+
+### Secrets e variáveis de ambiente
+
+Tem como objetivo não deixar visível as varáveis de ambiente, porém é possível descriptografar (quando usa base 64)
+
+```
+echo "luan" | base64
+echo $USER # valor da variável de ambiente
+```
