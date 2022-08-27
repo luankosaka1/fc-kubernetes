@@ -308,3 +308,13 @@ Tem como objetivo não deixar visível as varáveis de ambiente, porém é poss�
 echo "luan" | base64
 echo $USER # valor da variável de ambiente
 ```
+
+## Probes
+
+### Entendendo health check
+
+Precisamos tratar os pods que apresentarem problemas e garantir que os usuários não acessem mais o pod com problema
+
+### Criando endpoint Healthz
+
+Criado novo endpoint no server.go e versão v7 do lkosaka/hello-go
