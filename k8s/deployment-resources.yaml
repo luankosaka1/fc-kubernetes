@@ -16,13 +16,13 @@ spec:
     spec:
       containers:
         - name: goserver
-          image: "lkosaka/hello-go:v6"
+          image: "lkosaka/hello-go:v8"
           resources: # reservando as configurações para o POD
             requests:
-              cpu: "0.3"
+              cpu: "0.05"
               memory: 20Mi
             limits: # até quanto de recurso pode utilizar
-              cpu: "0.5"
+              cpu: "0.1"
               memory: 50Mi 
           envFrom:
             - configMapRef:

@@ -389,3 +389,24 @@ kubectl top pod goserver-6557db858c-thns2
 Responsável por verificar as métricas e vai provisionar as réplicas
 
 Não utiliza apenas o CPU para escalonar
+
+### Teste de stress com fortio
+
+Utilizano o fortio para realizar o teste
+
+```
+kubectl run -it --generator=run-pod/v1 fortio --rm --image=fortio/fortio -- load -qps 800 -t 120s -c 70 "http://goserver-service/healthz"
+kubectl run -it fortio --rm --image=fortio/fortio -- load -qps 800 -t 120s -c 70 "http://goserver-service/healthz"
+```
+
+O service é responsável por realizar o controle de loadbalance
+
+Monitorar HPA
+
+```
+watch -n1 kubectl get hpa
+```
+
+Alternativa para stress teste
+
+https://k6.io/
