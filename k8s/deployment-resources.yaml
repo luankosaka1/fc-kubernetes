@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: goserver
-  replicas: 3
+  replicas: 1
   template: # template do pod que queremos executar
     metadata:
       labels:

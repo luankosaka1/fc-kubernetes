@@ -383,3 +383,9 @@ Verificando o consumo do POD
 kubectl apply -f k8s/deployment-resources.yaml 
 kubectl top pod goserver-6557db858c-thns2
 ```
+
+### Criando e configurando HPA (Horizontal Pod Autoscaling)
+
+Responsável por verificar as métricas e vai provisionar as réplicas
+
+Não utiliza apenas o CPU para escalonar
