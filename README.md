@@ -353,3 +353,18 @@ Devemos tomar cuidado com as configurações para que um não impacte no outro e
 
 A partir da versão 1.16 do kubernet foi adicionado startupProbe.
 
+## Resources e HPA (Horizontal Pod Autoscaling)
+
+### Instalando metrics-server
+
+Coletor de métricas em tempo real
+
+https://github.com/kubernetes-sigs/metrics-server
+
+```
+cd k8s
+wget https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+cp components.yaml metrics-server.yaml
+```
+
+Adicionar --kubelet-insecure-tls na linha 139
