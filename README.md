@@ -374,3 +374,12 @@ Adicionar --kubelet-insecure-tls na linha 139
 Definir os recursos que iremos utilizar
 
 vCPU = 1000m (milicores)
+
+### Aplicando deployment com resources
+
+Verificando o consumo do POD
+
+```
+kubectl apply -f k8s/deployment-resources.yaml 
+kubectl top pod goserver-6557db858c-thns2
+```

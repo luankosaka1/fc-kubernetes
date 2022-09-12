@@ -19,10 +19,10 @@ spec:
           image: "lkosaka/hello-go:v6"
           resources: # reservando as configurações para o POD
             requests:
-              cpu: 100m
+              cpu: "0.3"
               memory: 20Mi
             limits: # até quanto de recurso pode utilizar
-              cpu: 500m
+              cpu: "0.5"
               memory: 50Mi 
           envFrom:
             - configMapRef:
