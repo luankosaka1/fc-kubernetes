@@ -368,3 +368,9 @@ cp components.yaml metrics-server.yaml
 ```
 
 Adicionar --kubelet-insecure-tls na linha 139
+
+### Entendendo utilização de Resources
+
+Definir os recursos que iremos utilizar
+
+vCPU = 1000m (milicores)

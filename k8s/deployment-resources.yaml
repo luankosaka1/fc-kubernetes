@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment # replica do replicaset.yaml
+metadata:
+  name: goserver
+  labels:
+    app: goserver
+spec:
+  selector:
+    matchLabels:
+      app: goserver
+  replicas: 3
+  template: # template do pod que queremos executar
+    metadata:
+      labels:
+        app: "goserver"
+    spec:
+      containers:
+        - name: goserver
+          image: "lkosaka/hello-go:v6"
+          resources: # reservando as configurações para o POD
+            requests:
+              cpu: 100m
+              memory: 20Mi
+            limits: # até quanto de recurso pode utilizar
+              cpu: 500m
+              memory: 50Mi 
+          envFrom:
+            - configMapRef:
+                name: configmap-family
+            - secretRef:
+                name: goserver-secret
+
+          volumeMounts:
+            - mountPath: "/go/myfamily"
+              name: config
+              readOnly: true
+
+      volumes:
+        - name: config 
+          configMap:
+            name: configmap-family 
+            items:
+              - key: members
+                path: "family.txt"
