@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: goserver
+  labels:
+    name: goserver
+spec:
+  selector:
+    matchLabels:
+      app: goserver
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: goserver
+    spec:
+      containers:
+        - name: goserver
+          image: lkosaka/hello-go:v7
+
+          startupProbe:
+            httpGet:
+              path: /healthz
+              port: 8000
+            periodSeconds: 3
+            failureThreshold: 10 # quando atingir 10 erros, a aplicação morre. Se ficar pronto antes o processo do readiness e liveness inicia
+
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 8000
+            periodSeconds: 3
+            failureThreshold: 1
+
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8000
+            periodSeconds: 5
+            failureThreshold: 3
+            timeoutSeconds: 1
+            successThreshold: 1
+
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          envFrom:
+            - configMapRef:
+                name: configmap-family
+            - secretRef:
+                name: goserver-secret
+          volumeMounts:
+            - mountPath: /go/myfamily
+              name: config
+              readOnly: true
+      volumes:
+        - name: config 
+          configMap:
+            name: configmap-family
+            items:
+              - key: members
+                path: "family.txt"

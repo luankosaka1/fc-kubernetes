@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment # replica do replicaset.yaml
+metadata:
+  name: goserver
+  labels:
+    app: goserver
+spec:
+  selector:
+    matchLabels:
+      app: goserver
+  replicas: 2
+  template: # template do pod que queremos executar
+    metadata:
+      labels:
+        app: "goserver"
+    spec:
+      containers:
+        - name: goserver
+          image: "lkosaka/hello-go:v7"
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 8000 # porta do container, não confundir com do services
+            periodSeconds: 3 # de quanto em quanto tempo será realizado a verificação
+            failureThreshold: 1 # quando der 1 erro a aplicação não esta pronto
+            initialDelaySeconds: 10 # aguarde X segundos para iniciar a verificação (periodSeconds)
+
+          envFrom:
+            - configMapRef:
+                name: configmap-family
+            - secretRef:
+                name: goserver-secret
+
+          volumeMounts:
+            - mountPath: "/go/myfamily"
+              name: config
+              readOnly: true
+
+      volumes:
+        - name: config 
+          configMap:
+            name: configmap-family 
+            items:
+              - key: members
+                path: "family.txt"
