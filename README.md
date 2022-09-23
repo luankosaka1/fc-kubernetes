@@ -410,3 +410,15 @@ watch -n1 kubectl get hpa
 Alternativa para stress teste
 
 https://k6.io/
+
+## Statefulsets e volumes persistentes
+
+### Entendendo volumes persistentes
+
+Stateless: sem estado, não armazena sessões/dados
+
+Claim (volume estática): solicita o espaço desejado no volume
+
+StorageClass: é uma especificação que vc tenha um driver, onde pode provisionar dinamicamente o volume
+
+Claim -> Solicita > StorageClass -> Disponibiliza o espaço que eu preciso (AWS: BlockStorage)
