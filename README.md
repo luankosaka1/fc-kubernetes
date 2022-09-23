@@ -416,9 +416,35 @@ https://k6.io/
 ### Entendendo volumes persistentes
 
 Stateless: sem estado, não armazena sessões/dados
+Stateful: tem estado, armazena dados (ex: Banco de Dados)
 
 Claim (volume estática): solicita o espaço desejado no volume
 
 StorageClass: é uma especificação que vc tenha um driver, onde pode provisionar dinamicamente o volume
 
 Claim -> Solicita > StorageClass -> Disponibiliza o espaço que eu preciso (AWS: BlockStorage)
+
+### Criando volume persistente e montando
+
+Listando volumes
+
+```
+kubectl get pvc
+```
+
+Acessando o pod e armazenando dentro da pasta go/pvc
+
+```
+kubectl exec -it {pod name} -- bash
+cd pvc
+touch oi
+```
+
+Excluir o pod e validar se o arquivo ainda persiste
+
+```
+kubectl delete pod {pod name}
+kubectl exec -it {pod name} -- bash
+cd pvc
+ls
+```
