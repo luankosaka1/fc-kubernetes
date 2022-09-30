@@ -448,3 +448,9 @@ kubectl exec -it {pod name} -- bash
 cd pvc
 ls
 ```
+
+### Stateless & Stateful
+
+#### Stateful
+
+Statefulset é um Stateful que gerencia os POD`s para garantir a consistência.
